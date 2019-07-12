@@ -3,7 +3,7 @@
 	Master theorem
 	Amortized time complexity
 ## Searching/Optimization
-	Binary Search :heavy_check_mark:		
+	Binary Search :check_mark:		
 	Ternary Search :heavy_check_mark: 
     Exponential Search :heavy_check_mark:
     Fibonacci Search :heavy_check_mark:
