@@ -1,2 +1,2 @@
 # Data-Structures-and-Algorithms
-DS Algo + solutions
+This contains implementations of various DS-Algos and my solutions to questions on CodeChef and Uva.
