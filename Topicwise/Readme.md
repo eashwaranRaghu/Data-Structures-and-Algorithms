@@ -1,23 +1,21 @@
-# Table of Contents
+# Table of Contents :sunglasses:
 ## Algorithm analysis
 	Master theorem
 	Amortized time complexity
 ## Searching/Optimization
-	Binary Search
-	Ternary Search
-    Exponential Search
-    Fibonacci Search
-    Interpolation Search
-    Jump Search
-	Unimodality and convex functions
-	Binary search on derivative
+	Binary Search :heavy_check_mark:		
+	Ternary Search :heavy_check_mark: 
+    Exponential Search :heavy_check_mark:
+    Fibonacci Search :heavy_check_mark:
+    Interpolation Search :heavy_check_mark:
+    Jump Search :heavy_check_mark:
 ## Sorting 
-    Insertion
-	Selection	   
-    Bubble    
+    Insertion :heavy_check_mark:
+	Selection :heavy_check_mark:	    
+    Bubble :heavy_check_mark:    
     Bucket       
     HeapSort   
-    Merge       
+    Merge :heavy_check_mark: 
     QuickSort
     ShellSort 
 	Counting
