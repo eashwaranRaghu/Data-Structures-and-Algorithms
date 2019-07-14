@@ -60,7 +60,6 @@
 * Merkle Tree
 * Segment Tree 
 * Fenwick Tree (Binary Indexed Tree)
-
 ## Graph theory
 * Traversals
 	* Depth first search :white_check_mark:
