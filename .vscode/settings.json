@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "vector": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "utility": "cpp",
+        "xstddef": "cpp",
+        "iostream": "cpp",
+        "map": "cpp",
+        "numeric": "cpp"
     }
 }
