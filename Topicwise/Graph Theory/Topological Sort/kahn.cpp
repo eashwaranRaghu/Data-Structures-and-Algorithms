@@ -65,6 +65,8 @@ Algo
 		○ deque a node and for all its neignbours dec indegree. If indegree hits 0 enque it.
     Time Complexity: O(n) just like bfs
     Space Complexity: O(n) uses queue
+Why use Kahn not BFS
+We need to know the source at first. Kahn does that. In BFS we need to guess it.
  */
 
 void kahn(VVi adj, Vi &inDegree, int source, Vi &result){
@@ -92,7 +94,6 @@ int main (int argc, char const *argv[]) {
     Vi inDegree(N, 0);
     Vi result;
     int source = 0;
-
     adj = {
         {1,2},
         {4},

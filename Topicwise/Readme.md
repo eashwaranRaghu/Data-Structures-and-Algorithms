@@ -83,6 +83,8 @@
 * Minimum spanning tree
 	* Kruskal algorithm
 	* Prim algorithm
+	* Boruvka algorithm
+	* Steiner Tree
 * Shortest paths
 	* Bellman Ford algorithm :white_check_mark:
 	* SPFA (Shortest Path Faster Algorithm)

@@ -56,7 +56,7 @@ typedef queue<int> Qi;
 typedef deque<int> DQi;
 
 // dfs using recursion
-void dfsRecursion(Vi adj[], bool visited[], int k){
+void dfsRecursion(VVi adj, vector<bool> &visited, int k){
     if(visited[k]) return;
     visited[k] = true;
     cout << k << ' ';
@@ -64,7 +64,7 @@ void dfsRecursion(Vi adj[], bool visited[], int k){
 }
 
 // dfs using stack
-void dfsStack(Vi adj[], bool visited[], int k){
+void dfsStack(VVi adj, vector<bool> &visited, int k){
     stack <int> S;
     S.push(k);
     while(!S.empty()){
@@ -81,12 +81,16 @@ void dfsStack(Vi adj[], bool visited[], int k){
 
 int main (int argc, char const *argv[]) {
     int N = 6; // number of nodes
-	Vi adj[N];
-    bool visited[N];
-    adj[1] = {2};
-    adj[2] = {0, 5};
-    adj[3] = {2};
-    adj[5] = {4, 3};    
+	VVi adj;
+    vector<bool> visited(N, false);
+    adj = {
+        {},
+        {2},
+        {0, 5},
+        {2},
+        {4, 3},
+        {}
+    }; 
     for(int i=0; i<N; i++) visited[i]=false;
     dfsRecursion(adj, visited, 1);
     cout << endl;

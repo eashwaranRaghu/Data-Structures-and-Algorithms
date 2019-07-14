@@ -6,6 +6,7 @@
         "xstddef": "cpp",
         "iostream": "cpp",
         "map": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "ostream": "cpp"
     }
 }
