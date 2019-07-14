@@ -1,4 +1,4 @@
-// Created on 14-07-2019 11:56:14 by necronomicon
+// Created on 14-07-2019 11:10:00 by necronomicon
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,7 +55,22 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-void bfsStack(Vi adj[], bool visited[], int k){
+/* 
+Two approaches are taken, reverse post order dfs and simple bfs.
+Q Why not pre or inorder dfs?
+A It is meaning less as the chain explored will ignore if other nodes lead to any element in the chain.
+ */
+
+// reverse order dfs
+void dfsRecursion(VVi adj, vector<bool> &visited, int k, Vi &result){
+    if(visited[k]) return;
+    visited[k] = true;
+    for(int x: adj[k]) dfsRecursion(adj, visited, x, result);
+    result.push_back(k);
+}
+
+//bfs
+void bfsStack(VVi adj, vector<bool> &visited, int k, Vi &result){
     queue <int> S;
     S.push(k);
     while(!S.empty()){
@@ -63,7 +78,7 @@ void bfsStack(Vi adj[], bool visited[], int k){
         S.pop();
         if(visited[front]) continue;
         else{
-            cout << front << ' ';
+            result.push_back(front);
             visited[front] = true;
             for(int x: adj[front]) S.push(x);
         }
@@ -71,14 +86,29 @@ void bfsStack(Vi adj[], bool visited[], int k){
 }
 
 int main (int argc, char const *argv[]) {
-    int N = 6; // number of nodes
-	Vi adj[N];
-    bool visited[N];
-    adj[1] = {2,3};
-    adj[2] = {0, 5};
-    adj[3] = {2};
-    adj[5] = {4, 3};
+    int N = 10; // number of nodes
+	VVi adj;
+    vector<bool> visited(N, false);
+    Vi r1, r2;
+    int source = 0;
+
+    adj = {
+        {1,2},
+        {4},
+        {4},
+        {},
+        {5},
+        {6},
+        {7,8},
+        {9},
+        {9},
+        {3},
+    };
+
+    dfsRecursion(adj, visited, source, r1); reverse(r1.begin(), r1.end());
+    for(int i=0; i<r1.size(); i++) cout << r1[i] << ' '; cout << endl;
     for(int i=0; i<N; i++) visited[i]=false;
-    bfsStack(adj, visited, 1);
+    bfsStack(adj, visited, source, r2);
+    for(int i=0; i<r2.size(); i++) cout << r2[i] << ' '; cout << endl;
     return EXIT_SUCCESS;
 }

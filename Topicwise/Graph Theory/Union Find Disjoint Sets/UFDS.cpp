@@ -61,9 +61,71 @@ so no element belongs to more than one set. Two O(logn) time operations are
 supported:
     UNITE operation joins two sets, and 
     FIND operation finds the representative of the set that contains a given element2.
+    Initially each element represents itself.
+Use an array(vector) in which we store pointer(iterator/index) of set's representitive or itself.
+RULE: Always connect the representative of the smaller set to the representative of the larger set and chain will be O(logn).
+    UNITE calls SAME and finds each sets representative and joins smaller set to larger set in O(log(n)).
+    FIND now follows the chain to the node which represents itself in O(log(n)).
+    FINDPRO uses recursion/(stack) and updates the representative of each node that falls in path to final value. This speeds up followinig searches.
+    SAME runs FIND on 2 nodes and checks if their representative is same or not in O(log(n));
+    COUNTSETS iterates the UFDS and counts all nodes which represent themselves.
  */
 
+int find(Vi &DS, int p){
+    while(p!=DS[p]){
+        p = DS[p];
+    }
+    return p;
+}
+
+int findPro(Vi &DS, int p){
+    if(p == DS[p]) return p;
+    int result = findPro(DS, DS[p]);
+    DS[p] = result;
+    return result;
+}
+
+bool same(Vi &DS, int i, int j){
+    return find(DS, i) == find(DS, j);
+}
+
+void unite(Vi &DS, Vi &size, int i, int j){
+    if(!same(DS, i, j)) {
+        i = find(DS, i);
+        j = find(DS, j);
+        if(size[i] < size[j]) swap(i,j);
+        DS[j] = i;
+        size[i] += size[j];
+        size[j] = 0;
+    }
+}
+
+int countSets(Vi &DS){
+    int total = 0;
+    for (int i = 0; i < DS.size(); i++) if(DS[i] == i) total++;
+    return total;
+}
+
 int main (int argc, char const *argv[]) {
-	
+    int N = 10; // total elements;
+	Vi DS(N), size(N);
+    for(int i=0; i<N; i++){
+        DS[i] = i;
+        size[i] = 1;
+    }
+    for(int i = 0; i<DS.size(); i++) cout << DS[i] << ' '; cout << endl; 
+    cout << find(DS, 1) << ' ' << countSets(DS) << endl;
+    unite(DS, size, 1, 2);
+    cout << find(DS, 2) << ' ' << countSets(DS) << endl;
+    for(int i = 0; i<DS.size(); i++) cout << DS[i] << ' '; cout << endl;
+    unite(DS, size, 1, 3);
+    cout << find(DS, 3) << ' ' << countSets(DS) << endl;
+    for(int i = 0; i<DS.size(); i++) cout << DS[i] << ' '; cout << endl;
+    unite(DS, size, 1, 4);
+    cout << find(DS, 7) << ' ' << countSets(DS) << endl;
+    for(int i = 0; i<DS.size(); i++) cout << DS[i] << ' '; cout << endl;
+    unite(DS, size, 8, 9);
+    cout << find(DS, 9) << ' ' << countSets(DS) << endl;
+    for(int i = 0; i<DS.size(); i++) cout << DS[i] << ' '; cout << endl;
     return EXIT_SUCCESS;
 }

@@ -6,15 +6,16 @@
 * Binary Search :white_check_mark:
 * Ternary Search :white_check_mark:
 * Exponential Search :white_check_mark:
+* Linear Search :white_check_mark:
 * Fibonacci Search
 * Interpolation Search :white_check_mark:
 * Jump Search :white_check_mark:
 * Insertion Sort :white_check_mark:
 * Selection Sort :white_check_mark:
 * Bubble Sort :white_check_mark:
-* Bucket Sort :white_check_mark:
-* Heap Sort
+* Bucket Sort
 * Merge Sort :white_check_mark:
+* Heap Sort
 * Quick Sort
 * Shell Sort
 * Counting Sort
@@ -69,15 +70,16 @@
 	* Forest-Fire using BFS :white_check_mark:
 	* Using Scan-Line algorithm
 * Topological Sort
-	* Using modified DFS
-	* Using modified BFS
-	* Kahn algorithm
+	* Using modified DFS/BSF :white_check_mark:
+	* Kahn algorithm :white_check_mark:
+* Articulation points and bridges (Undiredted graphs)
+* Strongly connected components (Directed graphs)
 * Vertex coloring
 	* Bipartite graphs (=> trees)
 	* 3^n (special case of set cover)
 * Edge coloring
 	* Trees
-* Union-Find Disjoint Sets
+* Union-Find Disjoint Sets :white_check_mark:
 * Minimum spanning tree
 	* Kruskal algorithm
 	* Prim algorithm
@@ -85,29 +87,29 @@
 	* Bellman Ford algorithm :white_check_mark:
 	* SPFA (Shortest Path Faster Algorithm)
 	* Dijkstra  algorithm :white_check_mark:
+	* A* algorithm
 	* Floyd-Warshall algorithm :white_check_mark:
-	* Johnson Algorithm
+	* Johnson algorithm
 * Flow networks
+	* Ford Fulkerson method
 	* Augmenting paths
 	* Edmonds-Karp
+* Min-cost max flow
+* Euler cycles
+* Shortest cycle
 * Bipartite matching
 * Konig's theorem and vertex cover
-* Min-cost max flow
 * Lovasz toggle
 * Matrix tree theorem
 * Maximal matching, general graphs
 * Hopcroft-Karp
 * Hall's marriage theorem
 * Graphical sequences
-* Euler cycles
 * Min. path cover
-* Topological sorting
-* Strongly connected components
 * 2-SAT
 * Cut vertices, cut-edges and biconnected components
 * Diameter and centroid
 * K'th shortest path
-* Shortest cycle
 * Dynamic graphs (extra book-keeping)
 ## Math
 ### Combinatorics
