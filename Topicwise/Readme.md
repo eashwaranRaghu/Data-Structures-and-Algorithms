@@ -64,50 +64,57 @@
 * Traversals
 	* Depth first search :white_check_mark:
 	* Breadth first search :white_check_mark:
-* Flood-Fill
-	* Using DFS :white_check_mark:
-	* Forest-Fire using BFS :white_check_mark:
-	* Using Scan-Line algorithm
+	* Flood-Fill (DFS) :white_check_mark:
+	* Forest-Fire (BFS) :white_check_mark:
 * Topological Sort
 	* Using modified DFS/BSF :white_check_mark:
 	* Kahn algorithm :white_check_mark:
 * Articulation points and bridges (Undiredted graphs)
 * Strongly connected components (Directed graphs)
+	* Kosaraju algorithm
+	* 2-SAT
 * Vertex coloring
 	* Bipartite graphs (=> trees)
 	* 3^n (special case of set cover)
 * Edge coloring
 	* Trees
 * Union-Find Disjoint Sets :white_check_mark:
-* Minimum spanning tree
-	* Kruskal algorithm
-	* Prim algorithm
+* Minimum spanning tree (Undirected Graphs)
+	* Kruskal algorithm :white_check_mark:
+	* Prim algorithm :white_check_mark:
 	* Boruvka algorithm
 	* Steiner Tree
+	* Bernard Chazelle
+* Minimum spanning tree (Arborescence/ Directed Graphs)
+	* Chu–Liu/Edmonds algorithm.
 * Shortest paths
-	* Bellman Ford algorithm :white_check_mark:
+	* Bellman-Ford algorithm :white_check_mark:
 	* SPFA (Shortest Path Faster Algorithm)
 	* Dijkstra  algorithm :white_check_mark:
 	* A* algorithm
 	* Floyd-Warshall algorithm :white_check_mark:
 	* Johnson algorithm
-* Flow networks
-	* Ford Fulkerson method
+* Paths and circuits
+	* Eulerian path
+	* Hamiltonian path
+	* De Bruijn sequences
+	* Knight's tour
+* Network flows and cuts
+	* Ford-Fulkerson algorithm
 	* Augmenting paths
 	* Edmonds-Karp
+* Matching
+	* Maximal matching, general graphs
+	* Bipartite matching
 * Min-cost max flow
-* Euler cycles
 * Shortest cycle
-* Bipartite matching
 * Konig's theorem and vertex cover
 * Lovasz toggle
 * Matrix tree theorem
-* Maximal matching, general graphs
 * Hopcroft-Karp
 * Hall's marriage theorem
 * Graphical sequences
 * Min. path cover
-* 2-SAT
 * Cut vertices, cut-edges and biconnected components
 * Diameter and centroid
 * K'th shortest path
