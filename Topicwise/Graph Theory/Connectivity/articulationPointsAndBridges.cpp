@@ -69,7 +69,7 @@ Algo:
     assign this node's id and low with it
     call all the children of this node
         if the node has children as parent skip it
-        if the child is already visited and child has lower id than low of current node then this child is an ancestor.
+        if the child is already visited and child has lower low than id of current node then this child is an ancestor.
         else child isnt discovered
             if its low is lesser than id of current then this is bridge
             if its low is lesser than or equal to id of current then this is artPoint

@@ -8,6 +8,9 @@
         "map": "cpp",
         "numeric": "cpp",
         "ostream": "cpp",
-        "xlocale": "cpp"
+        "xlocale": "cpp",
+        "cstdlib": "cpp",
+        "unordered_set": "cpp",
+        "xiosbase": "cpp"
     }
 }

@@ -69,7 +69,7 @@ Why use Kahn not BFS
 We need to know the source at first. Kahn does that. In BFS we need to guess it.
  */
 
-void kahn(VVi adj, Vi &inDegree, int source, Vi &result){
+void kahn(VVi adj, Vi &inDegree, Vi &result){
     Qi Q;
     for(int i=0; i<adj.size(); i++){
         for(int j=0; j<adj[i].size(); j++){
@@ -106,7 +106,7 @@ int main (int argc, char const *argv[]) {
         {9},
         {3},
     };
-    kahn(adj, inDegree, source, result);
+    kahn(adj, inDegree, result);
     for(int i=0; i<result.size(); i++) cout << result[i] << ' '; cout << endl;
     return EXIT_SUCCESS;
 }

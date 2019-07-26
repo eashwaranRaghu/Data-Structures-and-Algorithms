@@ -60,6 +60,7 @@
 * Merkle Tree
 * Segment Tree 
 * Fenwick Tree (Binary Indexed Tree)
+* Square Root Decomposition :white_check_mark:
 ## Graph theory
 * Traversals
 	* Depth first search :white_check_mark:
@@ -69,10 +70,10 @@
 * Topological Sort
 	* Using modified DFS/BSF :white_check_mark:
 	* Kahn algorithm :white_check_mark:
-* Articulation points and bridges (Undiredted graphs)
+* Articulation points and bridges (Undiredted graphs) :white_check_mark:
 * Strongly connected components (Directed graphs)
+	* Tarajan algorithm
 	* Kosaraju algorithm
-	* 2-SAT
 * Vertex coloring
 	* Bipartite graphs (=> trees)
 	* 3^n (special case of set cover)
@@ -118,6 +119,7 @@
 * Cut vertices, cut-edges and biconnected components
 * Diameter and centroid
 * K'th shortest path
+* 2-SAT
 * Dynamic graphs (extra book-keeping)
 ## Math
 ### Combinatorics
