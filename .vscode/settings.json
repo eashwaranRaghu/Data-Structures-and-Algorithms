@@ -11,6 +11,11 @@
         "xlocale": "cpp",
         "cstdlib": "cpp",
         "unordered_set": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "xstring": "cpp",
+        "algorithm": "cpp",
+        "xtree": "cpp"
     }
 }

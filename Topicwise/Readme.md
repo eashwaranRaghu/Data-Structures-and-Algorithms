@@ -3,18 +3,18 @@
 * Master theorem
 * Amortized time complexity
 ## Searching and Sorting
-* Binary Search :white_check_mark:
-* Ternary Search :white_check_mark:
-* Exponential Search :white_check_mark:
-* Linear Search :white_check_mark:
+* Binary Search :heavy_check_mark:
+* Ternary Search :heavy_check_mark:
+* Exponential Search :heavy_check_mark:
+* Linear Search :heavy_check_mark:
 * Fibonacci Search
-* Interpolation Search :white_check_mark:
-* Jump Search :white_check_mark:
-* Insertion Sort :white_check_mark:
-* Selection Sort :white_check_mark:
-* Bubble Sort :white_check_mark:
+* Interpolation Search :heavy_check_mark:
+* Jump Search :heavy_check_mark:
+* Insertion Sort :heavy_check_mark:
+* Selection Sort :heavy_check_mark:
+* Bubble Sort :heavy_check_mark:
 * Bucket Sort
-* Merge Sort :white_check_mark:
+* Merge Sort :heavy_check_mark:
 * Heap Sort
 * Quick Sort
 * Shell Sort
@@ -27,23 +27,24 @@
 * Invariants
 * Huffman encoding
 ### Dynamic programming
-* Knapsack
-* Coin change
+* 0-1 Knapsack :heavy_check_mark:
+* Coin change :heavy_check_mark:
+* 1D Range Sum Query :heavy_check_mark:
+* Ways to add upto an integer :heavy_check_mark:
 * Longest common subsequence
-* Longest increasing subsequence
+* Longest increasing subsequence :heavy_check_mark:
+* 3^n set cover
+* Knuth optimization
+* Convex hull optimizations
+* RMQ (sparse table a.k.a 2^k-jumps)
+* Bitonic cycle
+* Log partitioning (loop over most restricted)
 * Number of paths in a dag
 * Shortest path in a dag
 * Dynprog over intervals
 * Dynprog over subsets
 * Dynprog over probabilities
 * Dynprog over trees
-* 3^n set cover
-* Divide and conquer
-* Knuth optimization
-* Convex hull optimizations
-* RMQ (sparse table a.k.a 2^k-jumps)
-* Bitonic cycle
-* Log partitioning (loop over most restricted)
 ## Trees
 * Binary Tree
 * Binary Search Tree
@@ -60,17 +61,17 @@
 * Merkle Tree
 * Segment Tree 
 * Fenwick Tree (Binary Indexed Tree)
-* Square Root Decomposition :white_check_mark:
+* Square Root Decomposition :heavy_check_mark:
 ## Graph theory
 * Traversals
-	* Depth first search :white_check_mark:
-	* Breadth first search :white_check_mark:
-	* Flood-Fill (DFS) :white_check_mark:
-	* Forest-Fire (BFS) :white_check_mark:
+	* Depth first search :heavy_check_mark:
+	* Breadth first search :heavy_check_mark:
+	* Flood-Fill (DFS) :heavy_check_mark:
+	* Forest-Fire (BFS) :heavy_check_mark:
 * Topological Sort
-	* Using modified DFS/BSF :white_check_mark:
-	* Kahn algorithm :white_check_mark:
-* Articulation points and bridges (Undiredted graphs) :white_check_mark:
+	* Using modified DFS/BSF :heavy_check_mark:
+	* Kahn algorithm :heavy_check_mark:
+* Articulation points and bridges (Undiredted graphs) :heavy_check_mark:
 * Strongly connected components (Directed graphs)
 	* Tarajan algorithm
 	* Kosaraju algorithm
@@ -79,21 +80,21 @@
 	* 3^n (special case of set cover)
 * Edge coloring
 	* Trees
-* Union-Find Disjoint Sets :white_check_mark:
+* Union-Find Disjoint Sets :heavy_check_mark:
 * Minimum spanning tree (Undirected Graphs)
-	* Kruskal algorithm :white_check_mark:
-	* Prim algorithm :white_check_mark:
+	* Kruskal algorithm :heavy_check_mark:
+	* Prim algorithm :heavy_check_mark:
 	* Boruvka algorithm
 	* Steiner Tree
 	* Bernard Chazelle
 * Minimum spanning tree (Arborescence/ Directed Graphs)
 	* Chu–Liu/Edmonds algorithm.
 * Shortest paths
-	* Bellman-Ford algorithm :white_check_mark:
+	* Bellman-Ford algorithm :heavy_check_mark:
 	* SPFA (Shortest Path Faster Algorithm)
-	* Dijkstra  algorithm :white_check_mark:
+	* Dijkstra  algorithm :heavy_check_mark:
 	* A* algorithm
-	* Floyd-Warshall algorithm :white_check_mark:
+	* Floyd-Warshall algorithm :heavy_check_mark:
 	* Johnson algorithm
 * Paths and circuits
 	* Eulerian path
