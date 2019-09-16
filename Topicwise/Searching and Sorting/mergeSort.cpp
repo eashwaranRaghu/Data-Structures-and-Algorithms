@@ -55,43 +55,25 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-/* 
-    Take min from forward array and swap it with current element and advance a pos.
- */
-
-void swap(int &a, int &b){
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
-void selection(Vi &v){
-    int n = v.size();
-    for (int i = 0; i < n; i++)
-    {
-        int mn = n-1;
-        for (int j = i+1; j < n; j++)
-        {
-            if(v[mn]>v[j]){
-                mn = j;
-            }
-        }
-        if(v[mn] < v[i]){
-            swap(v[mn], v[i]);
-        }
-    }
+void merge(Vi &v, int l, int r){
+    if(l == r) return;
+    int mid = (l+r)/2;
+    merge(v, l, mid);
+    merge(v, mid+1, r);
+    inplace_merge(v.begin()+l, v.begin()+mid+1, v.begin()+r+1);
 }
 
 int main () {
 	Vi v;
-    v.push_back(2);
     v.push_back(3);
-    v.push_back(5);
-    v.push_back(1);
-    v.push_back(-10);
-    selection(v);
-    std::for_each(std::begin(v), std::end(v), [](int a) {
-      cout << a << ' ';
-    });
+    v.push_back(-1);
+    v.push_back(3);
+    v.push_back(0);
+    v.push_back(3);
+    v.push_back(-1);
+    v.push_back(3);
+    v.push_back(0);
+    merge(v, 0, v.size()-1);
+    std::for_each(std::begin(v), std::end(v), [](int a) {cout << a << ' ';});cout << endl;
     return EXIT_SUCCESS;
 }

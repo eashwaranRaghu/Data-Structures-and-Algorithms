@@ -16,7 +16,7 @@
 * Bucket Sort
 * Merge Sort :heavy_check_mark:
 * Heap Sort
-* Quick Sort
+* Quick Sort :heavy_check_mark:
 * Shell Sort
 * Counting Sort
 * Radix Sort
@@ -30,17 +30,21 @@
 * 0-1 Knapsack :heavy_check_mark:
 * Coin change :heavy_check_mark:
 * 1D Range Sum Query :heavy_check_mark:
+* 2D Range Sum Query
+* Longest Increasing Subsequence :heavy_check_mark:
+* Longest Common Subsequence :heavy_check_mark:
+* Matrix Chain Multiplication
+* Optimal Binary Search Tree
+* Binomial Coefficient 
 * Ways to add upto an integer :heavy_check_mark:
-* Longest common subsequence
-* Longest increasing subsequence :heavy_check_mark:
+* Number of paths in a dag
+* Shortest path in a dag
 * 3^n set cover
 * Knuth optimization
 * Convex hull optimizations
 * RMQ (sparse table a.k.a 2^k-jumps)
 * Bitonic cycle
 * Log partitioning (loop over most restricted)
-* Number of paths in a dag
-* Shortest path in a dag
 * Dynprog over intervals
 * Dynprog over subsets
 * Dynprog over probabilities

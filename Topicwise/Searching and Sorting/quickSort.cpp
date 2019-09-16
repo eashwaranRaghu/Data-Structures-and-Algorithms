@@ -55,43 +55,50 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
+Vi v;
+
+
 /* 
-    Take min from forward array and swap it with current element and advance a pos.
+  Partition Principle:
+    All elements [l,i-1] are strictly less than pivot
+    All elements [i,r] are greater than equal to pivot
+  can be divided into 3 parts.
+  1) Keep i=l
+  2) start loop using j and (if A[j]<pivot swap A[j] with A[i] and advance i)
+  3) At the end of loop swap A[i] with pivot cuz A[i] is the real pivot now.
  */
 
-void swap(int &a, int &b){
-    int temp = a;
-    a = b;
-    b = temp;
+int partition(int l, int r) { // Lomuto partition
+  int pivot = r; // last element is picked as pivot
+  int i = l;
+  for (int j = l+1; j+1 <= r; j++)
+  {
+    if(v[j] < v[pivot]) {
+      swap(v[j], v[i]);
+      i++;
+    }
+  }
+  swap(v[i], v[r]);
+  return i;
 }
 
-void selection(Vi &v){
-    int n = v.size();
-    for (int i = 0; i < n; i++)
-    {
-        int mn = n-1;
-        for (int j = i+1; j < n; j++)
-        {
-            if(v[mn]>v[j]){
-                mn = j;
-            }
-        }
-        if(v[mn] < v[i]){
-            swap(v[mn], v[i]);
-        }
-    }
+void quick(int l, int r) { // calls partition and then split the array into two.
+  if(l>=r) return;
+  int p = partition(l, r);
+  quick(l, p-1);
+  quick(p+1, r);
 }
+
 
 int main () {
-	Vi v;
-    v.push_back(2);
-    v.push_back(3);
-    v.push_back(5);
-    v.push_back(1);
-    v.push_back(-10);
-    selection(v);
-    std::for_each(std::begin(v), std::end(v), [](int a) {
-      cout << a << ' ';
-    });
+	
+    v = {3,1,4,2};
+
+    std::for_each(std::begin(v), std::end(v), [](int a) {cout << a << ' ';});cout << endl;
+
+    quick(0, v.size()-1);
+
+    std::for_each(std::begin(v), std::end(v), [](int a) {cout << a << ' ';});cout << endl;
+    
     return EXIT_SUCCESS;
 }

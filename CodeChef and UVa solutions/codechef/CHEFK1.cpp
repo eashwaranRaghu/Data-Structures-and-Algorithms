@@ -1,4 +1,4 @@
-// Created on 06-07-2019 18:33:24 by necronomicon
+// Created on 07-09-2019 18:51:26 by necronomicon
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,27 +55,36 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-void merge(Vi &v, int l, int r){
-    if(l == r) return;
-    int mid = (l+r)/2;
-    merge(v, l, mid);
-    merge(v, mid+1, r);
-    inplace_merge(v.begin()+l, v.begin()+mid+1, v.begin()+r+1);
+int64 solve() { 
+    int64 n,m;
+    cin >> n >> m;
+    if(m == 0 && n == 1) return 0;
+    int64 l, r;
+    l = n-1;
+    r = (n*(n+1))/2;
+    if(m < l || m > r) return -1;
+    int64 total = 0, ans = 0;
+    for (int64 i = n-1; i > 0; i--)
+    {
+        total += i;
+        ans++;
+        if(total >= m) return ans;
+        
+        if(i == n-1) {
+            total += n;
+            ans ++;
+            if(total >= m) return ans;
+        }
+    }
+    if(total >= m) return n;
+    return -1;
 }
 
-int main () {
-	Vi v;
-    v.push_back(3);
-    v.push_back(-1);
-    v.push_back(3);
-    v.push_back(0);
-    v.push_back(3);
-    v.push_back(-1);
-    v.push_back(3);
-    v.push_back(0);
-    merge(v, 0, v.size()-1);
-    std::for_each(std::begin(v), std::end(v), [](int a) {
-      cout << a << ' ';
-    });cout << endl;
+int main (int argc, char const *argv[]) {
+	int t;
+    cin >> t;
+    while (t--){
+        cout << solve() << endl;
+    }
     return EXIT_SUCCESS;
 }

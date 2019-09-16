@@ -1,4 +1,4 @@
-// Created on 06-07-2019 18:33:24 by necronomicon
+// Created on 07-09-2019 16:27:47 by necronomicon
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,43 +55,16 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-/* 
-    Take min from forward array and swap it with current element and advance a pos.
- */
-
-void swap(int &a, int &b){
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
-void selection(Vi &v){
-    int n = v.size();
-    for (int i = 0; i < n; i++)
-    {
-        int mn = n-1;
-        for (int j = i+1; j < n; j++)
-        {
-            if(v[mn]>v[j]){
-                mn = j;
-            }
-        }
-        if(v[mn] < v[i]){
-            swap(v[mn], v[i]);
-        }
+int main (int argc, char const *argv[]) {
+    Vi v = {0, 1, 1, 2, 3, 5, 8, 3, 1, 4, 5, 9, 4, 3, 7, 0, 7, 7, 4, 1, 5, 6, 1, 7, 8, 5, 3, 8, 1, 9, 0, 9, 9, 8, 7, 5, 2, 7, 9, 6, 5, 1, 6, 7, 3, 0, 3, 3, 6, 9, 5, 4, 9, 3, 2, 5, 7, 2, 9, 1};
+	int t;
+    cin >> t;
+    while (t--){
+        long long n;
+        cin >> n;
+        long long a = 1;
+        while(a*2 <= n) a*=2;
+        cout << v[a%60 - 1] << endl;
     }
-}
-
-int main () {
-	Vi v;
-    v.push_back(2);
-    v.push_back(3);
-    v.push_back(5);
-    v.push_back(1);
-    v.push_back(-10);
-    selection(v);
-    std::for_each(std::begin(v), std::end(v), [](int a) {
-      cout << a << ' ';
-    });
     return EXIT_SUCCESS;
 }
