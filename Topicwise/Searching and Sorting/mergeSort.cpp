@@ -55,12 +55,45 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
+void merge(Vi &v, int l, int mid, int r) {
+    Vi u;
+    int i=l, j=mid;
+    while(i<mid && j<=r) {
+        if(v[i] == v[j]) {
+            u.push_back(v[i]);
+            u.push_back(v[j]);
+            i++;
+            j++;
+        }
+        else if(v[i] < v[j]) {
+            u.push_back(v[i]);
+            i++;
+        }
+        else {
+            u.push_back(v[j]);
+            j++;
+        }
+    }
+    while(i<mid) {
+        u.push_back(v[i]);
+            i++;
+    }
+    while(j <= r) {
+        u.push_back(v[j]);
+        j++;
+    }
+    for (int idx = l, idy=0; idx <= r; idx++, idy++) {
+        v[idx] = u[idy];
+    }
+}
+
 void merge(Vi &v, int l, int r){
     if(l == r) return;
     int mid = (l+r)/2;
     merge(v, l, mid);
     merge(v, mid+1, r);
-    inplace_merge(v.begin()+l, v.begin()+mid+1, v.begin()+r+1);
+    // inplace_merge(v.begin()+l, v.begin()+mid+1, v.begin()+r+1);
+    merge(v, l, mid+1, r);
 }
 
 int main () {

@@ -62,37 +62,61 @@ VVi DP;
 
 int bruteForce(int i, int j) {
     if(i == j) return 0;
-    
+    int cost = numeric_limits<int>::max();
+    for (int k = i; k < j; k++)
+    {
+        cost = min(cost, bruteForce(i,k) + bruteForce(k+1, j) + (P[i-1]*P[k]*P[j]));
+    }
+    return cost;
+}
+
+int dpTopDown(int i, int j) {
+    if(i == j) return 0;
+    if(DP[i][j] != -1) return DP[i][j];
+    int cost = numeric_limits<int>::max();
+    for (int k = i; k < j; k++)
+    {
+        cost = min(cost, dpTopDown(i,k) + dpTopDown(k+1, j) + (P[i-1]*P[k]*P[j]));
+    }
+    return DP[i][j] = cost;
 }
 
 int dpBottomUp() {
 
-    for (int i = 0; i < N; i++) DP[i][i] = 0;
-    for (int l = 1; l < N; l++)
-    {
-        for (int i = 0; i < N; i++)
-        {
-            int j = i+l-1;
-            Vi v;
-            for (int k = i; k < j-1; k++)
-            {
-                v.push_back(dpBottomUp(i, k)+dpBottomUp(k+1, j) + (P[i-1]*P[k])*P[j]);
-            }
-            DP[i][j] = *min_element(v.begin(), v.end());
-        }
-        
-    }
-    
+    for (int i = 0; i <= N; i++) DP[i][i] = 0;
 
-    return 1;
+    for (int l = 1; l <= N; l++)
+    {
+        for (int i = 0; i+l <= N; i++)
+        {
+            int j = i+l;
+            int cost = numeric_limits<int>::max();
+            for (int k = i; k < j; k++)
+            {
+                cost = min(cost, DP[i][k] + DP[k+1][j] + (P[i-1]*P[k]*P[j]));
+            }
+            DP[i][j] = cost;
+        }
+    }
+    // for(Vi v: DP) {
+    //     for(int x: v) cout << x << ' ';
+    //     cout << endl;
+    // }
+    return DP[1][N];
 }
 
 int main (int argc, char const *argv[]) {
 	
-    P = {1,2,3,1,2,1};
+    P = {1,2,3,4,3};
     N = P.size()-1;
 
+    cout << "Brute-Force: " << bruteForce(1, N) << endl;
 
+    DP = VVi(P.size(), Vi(P.size(), -1));
+    cout << "Top-Down: " << dpTopDown(1, N) << endl;
+
+    DP = VVi(P.size(), Vi(P.size(), 0));
+    cout << "Bottom-Up: " << dpBottomUp() << endl;
 
     return EXIT_SUCCESS;
 }
