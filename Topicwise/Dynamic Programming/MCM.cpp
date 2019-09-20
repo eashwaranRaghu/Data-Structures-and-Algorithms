@@ -57,7 +57,7 @@ typedef deque<int> DQi;
 
 Vi P; // dimensions
 int N; // total matrices
-VVi DP;
+VVi DP, DPans;
 
 
 int bruteForce(int i, int j) {
@@ -90,24 +90,33 @@ int dpBottomUp() {
         for (int i = 0; i+l <= N; i++)
         {
             int j = i+l;
-            int cost = numeric_limits<int>::max();
+            int min_cost = numeric_limits<int>::max();
             for (int k = i; k < j; k++)
             {
-                cost = min(cost, DP[i][k] + DP[k+1][j] + (P[i-1]*P[k]*P[j]));
+                int cost = DP[i][k] + DP[k+1][j] + (P[i-1]*P[k]*P[j]);
+                if(min_cost > cost) {
+                    min_cost = cost;
+                    DPans[i][j] = k;
+                }
             }
-            DP[i][j] = cost;
+            DP[i][j] = min_cost;
         }
     }
-    // for(Vi v: DP) {
-    //     for(int x: v) cout << x << ' ';
-    //     cout << endl;
-    // }
+    for(Vi v: DP) {
+        for(int x: v) cout << x << ' ';
+        cout << endl;
+    }
+    cout << endl;
+    for(Vi v: DPans) {
+        for(int x: v) cout << x << ' ';
+        cout << endl;
+    }
     return DP[1][N];
 }
 
 int main (int argc, char const *argv[]) {
 	
-    P = {1,2,3,4,3};
+    P = {40, 20, 30, 10, 30};
     N = P.size()-1;
 
     cout << "Brute-Force: " << bruteForce(1, N) << endl;
@@ -116,6 +125,7 @@ int main (int argc, char const *argv[]) {
     cout << "Top-Down: " << dpTopDown(1, N) << endl;
 
     DP = VVi(P.size(), Vi(P.size(), 0));
+    DPans = VVi(P.size(), Vi(P.size(), 0));
     cout << "Bottom-Up: " << dpBottomUp() << endl;
 
     return EXIT_SUCCESS;

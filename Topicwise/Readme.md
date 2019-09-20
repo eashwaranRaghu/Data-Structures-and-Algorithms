@@ -30,11 +30,10 @@
 * 0-1 Knapsack :heavy_check_mark:
 * Coin change :heavy_check_mark:
 * 1D Range Sum Query :heavy_check_mark:
-* 2D Range Sum Query
 * Longest Increasing Subsequence :heavy_check_mark:
 * Longest Common Subsequence :heavy_check_mark:
-* Matrix Chain Multiplication
-* Optimal Binary Search Tree
+* Matrix Chain Multiplication :heavy_check_mark:
+* Optimal Binary Search Tree :heavy_check_mark:
 * Binomial Coefficient 
 * Ways to add upto an integer :heavy_check_mark:
 * Number of paths in a dag
