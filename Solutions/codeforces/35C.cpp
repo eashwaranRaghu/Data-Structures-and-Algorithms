@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 14-11-2019 09:04:33 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,52 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
-
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+Vi xa = {-1, 1, 0, 0}, ya = {0, 0, -1, 1};
+bool visited[2009][2009];
+int M[2009][2009];
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+	int n, m, k, x, y, z;
+    cin >> n >> m >> k;
+    for (int ii = 0; ii < n; ii++) for (int jj = 0; jj < m; jj++) M[ii][jj]=numeric_limits<int>::max();
+    for (int i = 0; i < k; i++)
+    {
+        for (int ii = 0; ii < n; ii++) for (int jj = 0; jj < m; jj++) visited[ii][jj]=false;
+        cin >> x >> y;
+        x--; y--;
+        visited[x][y]=true;
+        queue<Vi> Q;
+        Q.push({x,y, 0});
+
+        while(!Q.empty()) {
+            x = Q.front()[0], y = Q.front()[1], z = Q.front()[2];
+            Q.pop();
+            if(M[x][y] > z) {
+                M[x][y] = z;
+                for (int j = 0; j < xa.size(); j++)
+                {
+                    if(x+xa[j] >= 0 && x+xa[j] < n && y+ya[j]>=0 && y+ya[j] < m) {
+                        if(visited[x+xa[j]][y+ya[j]] == 0) {
+                            visited[x+xa[j]][y+ya[j]] = 1;
+                            Q.push({x+xa[j], y+ya[j], z+1});
+                        }
+                    }
+                }
+            }
+        }
+    }
+    int mx=numeric_limits<int>::min();
+    int a=1, b=1;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if(mx < M[i][j]) {
+                mx = M[i][j];
+                a=i, b=j;
+            }
+        }
+    }
+    cout << a+1 << ' ' << b+1;
     return EXIT_SUCCESS;
 }

@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// Created on 17-10-2019 01:40:21 by necronomicon
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,26 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
+int jobs;
+Vi profit, deadline;
 
-    TreeNode(int val) {
-        this->val = val;
+int solve() {
+    VPii v;
+    for (int i = 0; i < jobs; i++) v[i] = {profit[i], deadline[i]};
+    sort(begin(v), end(v));
+    Vi slots(jobs, 0);
+    for (int i = 0; i < jobs; i++)
+    {
+        
     }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+    
+    
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+	jobs = 5;
+    profit = {100, 19, 27, 25, 15};
+    deadline = {2, 1, 2, 1, 3};
+
     return EXIT_SUCCESS;
 }

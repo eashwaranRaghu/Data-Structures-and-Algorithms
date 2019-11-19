@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 15-11-2019 18:50:31 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,36 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
-
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
-
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
+	int n, m, t, r;
+    cin >> n >> m;
+    Vi arr(n);
+    VPii brr(m, {0,0});
+    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i < m; i++) cin >> brr[i].second >> brr[i].first;
     
-    T.dfs(&T);
-    cout << endl;
+    int idx =0;
+    Vi large;
+    while(idx < m) {
+        auto itr = max_element(begin(brr)+idx, end(brr));
+        if(itr == end(brr)) break;
+        idx = itr-begin(brr);
+        large.push_back(idx);
+        idx++;
+    }
+    
+    sort(begin(arr), begin(arr)+brr[large[0]].first, [&] (int a, int b) {return (brr[0].second==1)? (a<b):(a>b);});
+    
+    for (int i=1; i<large.size(); i++) 
+    {
+        t = brr[large[i]].second, r = brr[large[i]].first-1;
+        if((t == 1 && arr[0] > arr[r]) || (t==2 && arr[0] < arr[r])) {
+            for (int j = 0; j < r-j; j++)
+            {
+                swap(arr[j], arr[r-j]);
+            }
+        }
+    }
+    for (int x: arr) cout << x << ' ';
     return EXIT_SUCCESS;
 }

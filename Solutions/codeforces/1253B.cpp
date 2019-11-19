@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 16-11-2019 20:24:57 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,66 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
-
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
-
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
+	int n;
+    cin >> n;
+    Vi v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+    USi s;
+    Vi arr = {-1};
+    int total=0;
+    for (int i = 0; i < n; i++)
+    {
+        if(v[i] > 0) {
+            if(s.count(v[i]) > 0) {
+                cout << -1;
+                // cout << "up";
+                return 0;
+            }
+            else {
+                s.insert(v[i]);
+            }
+        }
+        else {
+            if(s.count(abs(v[i])) == 0) {
+                cout << -1;
+                // cout << "down" << v[i];
+                return 0;
+            }
+            else {
+                s.erase(abs(v[i]));
+            }
+        }
+        if(s.size() == 0) {
+            arr.push_back(i);
+            total++;
+        }
+    }
+    if(total == 0 || arr[arr.size()-1] != n-1) {
+        cout << -1;
+        return 0;
+    }
+    for (int i = 0; i+1 < arr.size(); i++)
+    {
+        UMii ss;
+        for (int j = arr[i]+1; j <= arr[i+1]; j++)
+        {
+            if(v[j] > 0) ss[v[j]]++;
+            if(ss[v[j]] > 1) {
+                cout << -1;
+                return 0;
+            }
+        }
+        
+    }
+    cout << total << endl;
+    for (int i = 1; i < arr.size(); i++)
+    {
+        cout << arr[i] - arr[i-1] << ' ';
+    }
     
-    T.dfs(&T);
-    cout << endl;
     return EXIT_SUCCESS;
 }

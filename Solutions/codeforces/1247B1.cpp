@@ -1,4 +1,4 @@
-// Created on 10-05-2019 06:54:21 by necronomicon
+// 26-10-2019 16:49:50 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,6 +18,7 @@
 #include <numeric>
 #include <utility>
 #include <limits>
+#include <iomanip>
 #include <ctime>
 #include <cmath>
 #include <cstdio>
@@ -54,48 +55,36 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-Vi col(10), diag1(10), diag2(10);
-int c, n;
-void rec(int j){
-    if(n == j){
-        c++;
-    }
-    else{
+int main (int argc, char const *argv[]) {
+	int t;
+    cin >> t;
+    while (t--){
+        int ai, n, k, d;
+        cin >> n >> k >> d;
+        Vi v(n);
         for (int i = 0; i < n; i++)
         {
-            if(col[i] || diag1[i+j] || diag2[i-j+n-1]) continue;
-
-            col[i] =diag1[i+j] = diag2[i-j+n-1] = 1;
-            rec(j+1);
-            col[i] =diag1[i+j] = diag2[i-j+n-1] = 0;
-            rec(j+1);
+            cin >> v[i];
         }
-    }
-}
-
-int arr[10][10];
-
-bool rec2(int x, int y, int c){
-    if(x>=8 || y>=8){
-        if(c == 8){
-            return true;
+        UMii m;
+        USi s;
+        for (int i = 0; i < d; i++)
+        {
+            m[v[i]]++;
+            s.insert(v[i]);
         }
-        else{
-            return false;
-        }
-    }
-    else {
-        
-    }
-}
+        int ans = s.size();
+        for (int i = 0; i+d < n; i++)
+        {
+            m[v[i]]--;
+            if(m[v[i]] == 0) s.erase(v[i]);
 
-int main () {
-    c =0;
-    n = 4;
-    col.reserve(n);
-    diag1.reserve(2*n);
-    diag2.reserve(2*n);
-    rec(0);
-    cout << c;
+            m[v[i+d]]++;
+            s.insert(v[i+d]);
+
+            ans = min(ans, (int)s.size());
+        }
+        cout << ans << endl;
+    }
     return EXIT_SUCCESS;
 }

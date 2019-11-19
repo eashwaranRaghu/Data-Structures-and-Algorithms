@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 15-11-2019 08:29:19 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,31 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
 
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
+    int n, m, x,y,z, p, u,v, N,M;
+    cin >> n >> m >> x >> y >> z >> p;
+    x%=4;
+    y%=2;
+    z%=4;
+    for (int i = 0; i < p; i++)
+    {
+        cin >> u >> v;
+        N=n+1, M=m+1;
+        for (int i = 0; i < x; i++) {
+            u = N-u;
+            swap(u, v);
+            swap(N, M);
+        }
+        if(y==1) v = M-v;
+        for (int i = 0; i < 4-z; i++) {
+            u = N-u;
+            swap(u, v);
+            swap(N, M);
+        }
+        cout << u << ' ' << v << endl;
+    }
     
-    T.dfs(&T);
-    cout << endl;
     return EXIT_SUCCESS;
 }

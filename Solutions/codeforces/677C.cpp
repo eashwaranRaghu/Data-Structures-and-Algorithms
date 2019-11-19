@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 14-11-2019 15:03:52 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,22 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
+int64 get(char c) {
+    if(c == '_') return 63;
+    if(c == '-') return 62;
+    if('0'<= c && c <= '9') return (c-'0');
+    if('A'<= c && c <= 'Z') return (c-'A'+10);
+    if('a'<= c && c <= 'z') return (c-'a'+36);
+    return 0;
+}
 
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+	string s;
+    int64 t=0, ans=1;
+    cin >> s;
+    for (int i = 0; i < s.size(); i++) t += (6-__builtin_popcount(get(s[i])));
+    for (int i = 0; i < t; i++) ans = ((ans%MOD)*3)%MOD;
+    cout << ans;
     return EXIT_SUCCESS;
 }

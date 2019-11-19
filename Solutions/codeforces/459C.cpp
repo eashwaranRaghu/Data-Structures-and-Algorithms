@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 18-11-2019 19:39:46 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,40 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
+int n, d, k;
+VVi res;
+int calc=0;
 
-    TreeNode(int val) {
-        this->val = val;
+void fn(int idx, Vi num) {
+    calc++;
+    if(calc > 5000000) return;
+    if(res.size() == n) return;
+    if(idx == d) {
+        res.push_back(num);
     }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
+    else {
+        for (int i = 1; i <= min(k, 2001); i++)
+        {
+            num.push_back(i);
+            fn(idx+1, num);
+            num.pop_back();
         }
     }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+    cin >> n >> k >> d;
+    fn(0, Vi());
+    if(res.size() < n) cout << -1;
+    else {
+        for (int i = 0; i < d; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                cout << res[j][i] << ' ';
+            }
+            cout << endl;
+        }
+    }
     return EXIT_SUCCESS;
 }

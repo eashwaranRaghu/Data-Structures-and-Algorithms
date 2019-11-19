@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 02-11-2019 17:55:28 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,30 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
+int64 n,k,d;
+vector<pair<int64,int64>> dp;
 
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
+void rec() {
+    dp[0] = {1,0};
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= k && j <= i; j++)
+        {
+            if(j < d) {
+                dp[i].first = (dp[i].first%MOD + dp[i-j].first%MOD)%MOD;
+                dp[i].second = (dp[i].second%MOD+ dp[i-j].second%MOD)%MOD;
             }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
+            else {
+                dp[i].second = (dp[i].second%MOD + (dp[i-j].second%MOD + dp[i-j].first%MOD)%MOD)%MOD;
             }
-            else return;
         }
     }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+    cout << dp[n].second;
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+    cin >> n >> k >> d;
+    dp = vector<pair<int64,int64>>(n+1, {0,0});
+    rec();
     return EXIT_SUCCESS;
 }

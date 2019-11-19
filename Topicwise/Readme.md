@@ -22,7 +22,7 @@
 * Radix Sort
 ## Algorithmic Paradigms
 ### Greedy algorithm
-* Scheduling
+* Task Scheduling
 * Max contiguous subvector sum
 * Invariants
 * Huffman encoding
@@ -34,16 +34,15 @@
 * Longest Common Subsequence :heavy_check_mark:
 * Matrix Chain Multiplication :heavy_check_mark:
 * Optimal Binary Search Tree :heavy_check_mark:
-* Binomial Coefficient 
+* Binomial Coefficient :heavy_check_mark:
 * Ways to add upto an integer :heavy_check_mark:
 * Number of paths in a dag
-* Shortest path in a dag
-* 3^n set cover
 * Knuth optimization
 * Convex hull optimizations
 * RMQ (sparse table a.k.a 2^k-jumps)
 * Bitonic cycle
 * Log partitioning (loop over most restricted)
+* 3^n set cover
 * Dynprog over intervals
 * Dynprog over subsets
 * Dynprog over probabilities

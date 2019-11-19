@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 26-10-2019 04:06:48 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,27 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
+Si s;
 
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
+void fn(int k, int sum) {
+    if(k == -1) {
+        s.insert(sum);
         return;
     }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+    fn(k-1, sum + pow(3, k));
+    fn(k-1, sum);
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+	int t;
+    cin >> t;
+    fn(9, 0);
+    while (t--){
+        int n;
+        cin >> n;
+        if(s.lower_bound(n) == s.end() || *s.lower_bound(n) != n) cout << *s.upper_bound(n) << endl;
+        else cout << n << endl;
+        
+    }
     return EXIT_SUCCESS;
 }

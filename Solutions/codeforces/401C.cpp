@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 30-10-2019 13:25:16 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,35 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
-
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
-
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+	int n, m;
+    cin >> n >> m;
+    string s;
+    if(2*(n+1) < m || n > m+1) cout << -1;
+    else {
+        if(2*(n+1) == m) {
+            s="11";
+            m-=2;
+        }
+        else if(2*(n+1) == m+1) {
+            s="1";
+            m--;
+        }
+        if(m-n > 1) {
+            while(abs(n-m) >1) {
+                s += "011";
+                n--;
+                m-=2;
+            }
+        }
+        while(n>0 && m > 0) {
+            s += "01";
+            n--;
+            m--;
+        }
+        if(n==1) s+="0";
+        else if(m==1) s+="1";
+        cout << s;
+    }
     return EXIT_SUCCESS;
 }

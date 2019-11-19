@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// Created on 05-10-2019 19:54:30 by necronomicon
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,60 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
 
-    TreeNode(int val) {
-        this->val = val;
-    }
+/* 
+NQueen: place n queend in n*n board without conflicts.
 
-    void insert(int val){
-        TreeNode *root = this;
+Most effecient solution
+Data: 3 arrays of bools:
+    col: to checl if col[i] has element
+    diag1: to check if col[i+j] has element (backDiag \)
+    diag2: to check if col[i-j+n-1] has element (FwrdDiag /)
+Function called from y=0 whihc means it places element on row y from 0 to n
+for each call it places queen on every possible col x from 0 to n which is valid.
+*/
 
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
+int n;
+Vi col, diag1, diag2;
+
+int nQueen(int y=0) {
+    if(y == n) return 1;
+    int r = 0;
+    for (int x = 0; x < n; x++)
+    {
+        if(!(col[x] || diag1[x+y] || diag2[x-y+n-1])) {
+            col[x] = diag1[x+y] = diag2[x-y+n-1] = 1;
+            r += nQueen(y+1);
+            col[x] = diag1[x+y] = diag2[x-y+n-1] = 0;
         }
     }
+    return r;
+}
 
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
+void nQueenSolution(int y=0, string s ="") {
+    if(y == n) {
+        cout << s << endl;
         return;
     }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
+    int r = 0;
+    for (int x = 0; x < n; x++)
+    {
+        if(!(col[x] || diag1[x+y] || diag2[x-y+n-1])) {
+            col[x] = diag1[x+y] = diag2[x-y+n-1] = 1;
+            string t = "a";
+            t[0] = '0'+x;
+            nQueenSolution(y+1, s+t);
+            col[x] = diag1[x+y] = diag2[x-y+n-1] = 0;
+        }
     }
-};
+    return;
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
-    
-    T.dfs(&T);
-    cout << endl;
+	n = 8;
+    col= Vi(n, 0);
+    diag1 = diag2 = Vi(2*n, 0);
+    cout << nQueen() << endl << endl;
+    nQueenSolution();
     return EXIT_SUCCESS;
 }

@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 16-11-2019 16:52:49 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,32 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
-
-    TreeNode(int val) {
-        this->val = val;
-    }
-
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
-    }
-
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
-
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+int64 nCr(int64 n, int64 k) 
+{ 
+    int64 C[k+1]; 
+    memset(C, 0, sizeof(C)); 
+  
+    C[0] = 1;  // nC0 is 1 
+  
+    for (int64 i = 1; i <= n; i++) 
+    { 
+        // Compute next row of pascal triangle using 
+        // the previous row 
+        for (int64 j = min(i, k); j > 0; j--) 
+            C[j] = C[j] + C[j-1]; 
+    } 
+    return C[k]; 
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
+	int64 n, m, t;
+    cin >> n >> m >> t;
+    int64 ans=0, boys=0, girls=0;
+    for (int64 i = 4; i <= t-1; i++)
+    {
+        ans += (nCr(n, i)*nCr(m, t-i));
+    }
     
-    T.dfs(&T);
-    cout << endl;
+    cout << ans;
     return EXIT_SUCCESS;
 }

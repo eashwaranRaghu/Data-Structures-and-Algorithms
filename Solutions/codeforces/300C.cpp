@@ -1,4 +1,4 @@
-// Created on 01-08-2019 20:14:37 by necronomicon
+// 18-11-2019 20:44:37 badLiver
 #include <iostream>
 #include <string>
 #include <vector>
@@ -55,65 +55,57 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-class TreeNode{
-public:
-    int val;
-    TreeNode *left = NULL, *right = NULL;
 
-    TreeNode(int val) {
-        this->val = val;
+int64 n, a, b, sum, ans=0;
+vector<int64> fact(1000009, 1);
+
+bool isGood(int64 x) {
+    while(x) {
+        if(x%10 !=a && x%10 != b) return false;
+        x/=10;
     }
+    return true;
+}
 
-    void insert(int val){
-        TreeNode *root = this;
-
-        while(root != NULL) {
-            if(root->val > val) {
-                if(root->left == NULL) {
-                    root->left = new TreeNode(val);
-                    return;
-                }
-                else    root = root->left;
-            }
-            else if(root->val < val) {
-                if(root->right == NULL) {
-                    root->right = new TreeNode(val);
-                    return;
-                }
-                else    root = root->right;
-            }
-            else return;
-        }
+void fac() {
+    int64 f=1;
+    for (int64 i = 1; i <= n; i++)
+    {
+        f = (f%MOD * i%MOD)%MOD;
+        fact[i] = f;
     }
+}
 
-    bool find(int val) {
-        TreeNode * root = this;
-        while(root != NULL) {
-            if(root->val > val) root = root->left;
-            else if(root->val < val) root = root->right;
-            else return true;
-        }
-        return false;
-    }
+long long binpow(long long val, long long deg, long long mod) {
+        if (!deg) return 1 % mod;
+        if (deg & 1) return binpow(val, deg - 1, mod) * val % mod;
+        long long res = binpow(val ,deg >> 1, mod);
+        return (res*res) % mod;
+}
 
-    void drop(int val) {
-        return;
-    }
-
-    void dfs(TreeNode *root) {
-        if(root == NULL) return;
-        dfs(root->left);
-        cout << root->val << endl;
-        dfs(root->right);
-    }
-};
+int64 inv(int64 val, int64 deg) {
+    if(deg==0) return 1;
+    if(deg&1) return ((inv(val, deg-1)%MOD)*(val)%MOD)%MOD;
+    int64 res = inv(val, deg >> 1)%MOD;
+    return (res*res)%MOD;
+}
 
 int main (int argc, char const *argv[]) {
-	Vi v = {1,2,10,4,11,5};
-    TreeNode T(0);
-    for(int x: v) T.insert(x);
+    cin >> a >> b >> n;
+    fac();
+    for (int64 i = 0; i <= n; i++)
+    {
+        sum = (i*a)+((n-i)*b);
+        if(isGood(sum)) {
+            int64 res = fact[n];
+            // int64 div = binpow((fact[i]*fact[n-i])%MOD, MOD-2, MOD);
+            ans += (res*inv((fact[i]*fact[n-i])%MOD, MOD-2))%MOD;
+            ans%=MOD;
+        }
+    }
+
+    cout << ans;
     
-    T.dfs(&T);
-    cout << endl;
     return EXIT_SUCCESS;
 }
+// eulers toient fncn
