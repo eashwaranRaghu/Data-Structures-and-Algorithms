@@ -1,10 +1,10 @@
-# Table of Contents :sunglasses:
+# Table of Contents :snail:
 1. Algorithm analysis
-	* Solving recurrences
+	* Solving recurrences [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/?ref=lbp)
 		* Substitution Method
 		* Recurrence Tree Method
 		* Master Method
-	* Amortized time complexity
+	* Amortized Analysis [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/?ref=lbp)
 2. Searching and Sorting
 	* Binary Search :heavy_check_mark:
 	* Ternary Search :heavy_check_mark:
