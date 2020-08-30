@@ -1,28 +1,33 @@
 # Table of Contents :snail:
 1. Algorithm analysis
 	* Solving recurrences [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/?ref=lbp)
-		* Substitution Method
-		* Recurrence Tree Method
-		* Master Method
-	* Amortized Analysis [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/?ref=lbp)
-2. Searching and Sorting
-	* Binary Search :heavy_check_mark:
-	* Ternary Search :heavy_check_mark:
-	* Exponential Search :heavy_check_mark:
-	* Linear Search :heavy_check_mark:
-	* Fibonacci Search
-	* Interpolation Search :heavy_check_mark:
-	* Jump Search :heavy_check_mark:
-	* Insertion Sort :heavy_check_mark:
-	* Selection Sort :heavy_check_mark:
-	* Bubble Sort :heavy_check_mark:
-	* Bucket Sort
-	* Merge Sort :heavy_check_mark:
-	* Heap Sort
-	* Quick Sort :heavy_check_mark:
-	* Shell Sort
-	* Counting Sort
-	* Radix Sort
+		* Iteration Method
+		* Substitution Method :heavy_check_mark:
+		* Recurrence Tree Method :heavy_check_mark:
+		* Master Method :heavy_check_mark:
+	* Amortized Analysis [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/?ref=lbp) :heavy_check_mark:
+2. Searching, Sorting and Order Statistics
+	1. Searching
+		* Binary Search :heavy_check_mark:
+		* Ternary Search :heavy_check_mark:
+		* Exponential Search :heavy_check_mark:
+		* Linear Search :heavy_check_mark:
+		* Fibonacci Search
+		* Interpolation Search :heavy_check_mark:
+		* Jump Search :heavy_check_mark:
+	2. Sorting
+		* Insertion Sort :heavy_check_mark:
+		* Selection Sort :heavy_check_mark:
+		* Bubble Sort :heavy_check_mark:
+		* Bucket Sort
+		* Merge Sort :heavy_check_mark:
+		* Heap Sort
+		* Quick Sort :heavy_check_mark:
+		* Shell Sort
+		* Counting Sort
+		* Radix Sort
+	3. Order Statistics
+		* Minimum and maximum
 3. Algorithmic Paradigms
 	1. Complete Search
 		* N-queen
@@ -45,15 +50,18 @@
 		* Bitonic cycle
 		* Log partitioning (loop over most restricted)
 		* 3^n set cover
-		* Dynprog over intervals
-		* Dynprog over subsets
-		* Dynprog over probabilities
-		* Dynprog over trees
+		* DP over intervals
+		* DP over subsets
+		* DP over probabilities
+		* DP over trees
 	4. Greedy algorithm
 		* Task Scheduling
 		* Max contiguous subvector sum
 		* Invariants
 		* Huffman encoding
+		* Matroid
+		* Activity Selection
+		* Fractional Knapsack
 4. Trees
 	* Binary Tree
 	* Binary Search Tree
@@ -187,9 +195,8 @@
 	* KD-trees
 	* All segment-segment intersection
 8. Strings
-	* Longest common substring
-	* Palindrome subsequences
 	* Knuth-Morris-Pratt
+	* Rabin Karp
 	* Tries
 	* Rolling polynomial hashes
 	* Suffix array
@@ -198,19 +205,19 @@
 	* Manacher's algorithm
 	* Letter position lists
 9. Others
-	1. Combinatorial search
+	* Combinatorial search
 		* Meet in the middle
 		* Brute-force with pruning
 		* Best-first (A*)
 		* Bidirectional search
 		* Iterative deepening DFS / A*
 		* MiniMax
-	2. Sweeping
+	* Sweeping
 		* Discretization (convert to events and sweep)
 		* Angle sweeping
 		* Line sweeping
 		* Discrete second derivatives
-	3. Data structures related
+	* Data structures related
 		* LCA (2^k-jumps in trees in general)
 		* Pull/push-technique on trees
 		* Heavy-light decomposition
@@ -221,3 +228,21 @@
 		* Monotone queues / monotone stacks / sliding queues
 		* Sliding queue using 2 stacks
 		* Persistent segment tree
+	* Travelling salseman
+	* Sliding window
+	* 2 pointers
+	* Fast & slow pointers
+	* Merge interval
+	* Cyclic Sort
+	* 2 Heaps
+	* K-way merge
+	* Minimax
+	* Line sweep
+	* Rolling Hash
+	* Reservoir sampling
+	* Rejection sampling
+	* Scan Line
+	* Matrix fast exponentiation
+	* Repeated squaring
+	* Fermat's Little theorem
+	* Shunting yard algorithm: expression parsing
