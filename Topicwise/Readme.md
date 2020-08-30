@@ -1,6 +1,9 @@
 # Table of Contents :sunglasses:
 ## Algorithm analysis
-* Master theorem
+* Solving recurrences
+	* Substitution Method
+	* Recurrence Tree Method
+	* Master Method
 * Amortized time complexity
 ## Searching and Sorting
 * Binary Search :heavy_check_mark:
@@ -47,6 +50,10 @@
 * Dynprog over subsets
 * Dynprog over probabilities
 * Dynprog over trees
+### Divide and Conquer
+* Strassen's algorithm for matrix multiplication
+### Complete Search
+* N-queen
 ## Trees
 * Binary Tree
 * Binary Search Tree
