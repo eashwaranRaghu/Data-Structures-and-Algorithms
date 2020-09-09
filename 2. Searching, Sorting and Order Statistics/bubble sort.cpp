@@ -55,12 +55,6 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-void swap(int &a, int &b){
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
 void bubble(Vi &v){
     int n = v.size();
     for (int i = n-1; i >= 0; i--)

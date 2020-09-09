@@ -6,16 +6,15 @@
 		* Recurrence Tree Method
 		* Master Method
 	* Amortized Analysis
-2. Searching, Sorting and Order Statistics
-	1. Searching [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Searching.md)
+2. Searching, Sorting and Order Statistics [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Readme.md)
+	1. Searching
 		* Binary Search :heavy_check_mark:
 		* Ternary Search :heavy_check_mark:
 		* Exponential Search :heavy_check_mark:
 		* Linear Search :heavy_check_mark:
-		* Fibonacci Search
 		* Interpolation Search :heavy_check_mark:
 		* Jump Search :heavy_check_mark:
-	2. Sorting [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Sorting.md)
+	2. Sorting
 		* Insertion Sort :heavy_check_mark:
 		* Selection Sort :heavy_check_mark:
 		* Bubble Sort :heavy_check_mark:
@@ -26,7 +25,7 @@
 		* Shell Sort
 		* Counting Sort
 		* Radix Sort
-	3. Order Statistics [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Order%20Statistics.md)
+	3. Order Statistics
 		* Minimum and maximum
 3. Algorithmic Paradigms
 	1. Complete Search

@@ -55,12 +55,6 @@ typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
 
-void swap(int &a, int &b){
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
 void insertion(Vi &v){
     int n = v.size();
     for (int i = 1; i < n; i++)
@@ -75,7 +69,6 @@ void insertion(Vi &v){
             }
         }
     }
-    
 }
 
 int main () {
