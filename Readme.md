@@ -1,13 +1,13 @@
 # Table of Contents :snail:
 1. Algorithm analysis
-	* Solving recurrences [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/?ref=lbp)
+	* Solving recurrences
 		* Iteration Method
-		* Substitution Method :heavy_check_mark:
-		* Recurrence Tree Method :heavy_check_mark:
-		* Master Method :heavy_check_mark:
-	* Amortized Analysis [GFG](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/?ref=lbp) :heavy_check_mark:
+		* Substitution Method
+		* Recurrence Tree Method
+		* Master Method
+	* Amortized Analysis
 2. Searching, Sorting and Order Statistics
-	1. Searching
+	1. Searching [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Searching.md)
 		* Binary Search :heavy_check_mark:
 		* Ternary Search :heavy_check_mark:
 		* Exponential Search :heavy_check_mark:
@@ -15,7 +15,7 @@
 		* Fibonacci Search
 		* Interpolation Search :heavy_check_mark:
 		* Jump Search :heavy_check_mark:
-	2. Sorting
+	2. Sorting [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Sorting.md)
 		* Insertion Sort :heavy_check_mark:
 		* Selection Sort :heavy_check_mark:
 		* Bubble Sort :heavy_check_mark:
@@ -26,7 +26,7 @@
 		* Shell Sort
 		* Counting Sort
 		* Radix Sort
-	3. Order Statistics
+	3. Order Statistics [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Order%20Statistics.md)
 		* Minimum and maximum
 3. Algorithmic Paradigms
 	1. Complete Search
@@ -244,5 +244,6 @@
 	* Scan Line
 	* Matrix fast exponentiation
 	* Repeated squaring
+	* Euler's Theorem
 	* Fermat's Little theorem
 	* Shunting yard algorithm: expression parsing
