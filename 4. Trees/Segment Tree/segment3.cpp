@@ -1,19 +1,6 @@
 
 // Created on 27-04-2019 00:07:49 by necronomicon
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <deque>
-#include <bitset>
-#include <map>
-#include <set>
-#include <unordered_map>
-#include <unordered_set>
-#include <utility>
-#include <cmath>
-#include <cstring>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define MP make_pair

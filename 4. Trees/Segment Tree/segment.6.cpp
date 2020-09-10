@@ -2,20 +2,7 @@
 // To enable lazy propagation and range updates, uncomment the following line.
  #define LAZY
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <deque>
-#include <bitset>
-#include <map>
-#include <set>
-#include <unordered_map>
-#include <unordered_set>
-#include <utility>
-#include <cmath>
-#include <cstring>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define MP make_pair
