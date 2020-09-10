@@ -226,17 +226,19 @@ Conceptually, a merge sort works as follows:
 ![merge](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Merge-sort-example-300px.gif/220px-Merge-sort-example-300px.gif)
 
 ```cpp
-void merge(Vi &v, int l, int mid, int r) {
-    Vi u;
+void merge(Vi &v, int l, int r){ // splits array into 2 recursively and then merge them.
+    if(l == r) return; // when no division is possible return.
+    int mid = (l+r)/2; // divide at mid
+    merge(v, l, mid);
+    merge(v, mid+1, r);
+    // inplace_merge(v.begin()+l, v.begin()+mid+1, v.begin()+r+1);
+    merge(v, l, mid+1, r); // merges 2 sorted array
+}
+void merge(Vi &v, int l, int mid, int r) { // merges 2 sorted array using auxiliary space
+    Vi u; // auxiliary array to store sorted array
     int i=l, j=mid;
-    while(i<mid && j<=r) {
-        if(v[i] == v[j]) {
-            u.push_back(v[i]);
-            u.push_back(v[j]);
-            i++;
-            j++;
-        }
-        else if(v[i] < v[j]) {
+    while(i<mid && j<=r) { // push the smaller values first
+        if(v[i] <= v[j]) {
             u.push_back(v[i]);
             i++;
         }
@@ -245,6 +247,7 @@ void merge(Vi &v, int l, int mid, int r) {
             j++;
         }
     }
+    // now empty the remaining array
     while(i<mid) {
         u.push_back(v[i]);
             i++;
@@ -254,71 +257,100 @@ void merge(Vi &v, int l, int mid, int r) {
         j++;
     }
     for (int idx = l, idy=0; idx <= r; idx++, idy++) {
-        v[idx] = u[idy];
+        v[idx] = u[idy]; // copy elements from auxiliary array to original array
     }
 }
-
-void merge(Vi &v, int l, int r){
-    if(l == r) return;
-    int mid = (l+r)/2;
-    merge(v, l, mid);
-    merge(v, mid+1, r);
-    // inplace_merge(v.begin()+l, v.begin()+mid+1, v.begin()+r+1);
 ```
 
 ### 6. Quick Sort
-
+When implemented well, it can be about two or three times faster than its main competitors, merge sort and heapsort.
+Partition the array into 2 parts then recursively call on both subarrays.
+Inplace but effecient implementations are not stable sort.
 Partition Principle:
-All elements [l,i-1] are strictly less than pivot
+All elements [l,i) are strictly less than pivot
 All elements [i,r] are greater than equal to pivot
-can be divided into 3 parts.
+Steps:
 1. Keep i=l
 2. start loop using j and (if A[j] < pivot swap A[j] with A[i] and advance i)
-3. At the end of loop swap A[i] with pivot cuz A[i] is the real pivot now.
+3. At the end of loop swap A[i] with A[r] cuz A[r] was the pivot used.
+
+![quick](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sorting_quicksort_anim.gif/220px-Sorting_quicksort_anim.gif) *Animated visualization of the quicksort algorithm. The horizontal lines are pivot values.*
 
 ```cpp
-int partition(int l, int r) { // Lomuto partition
-  int pivot = r; // last element is picked as pivot
-  int i = l;
-  for (int j = l+1; j+1 <= r; j++)
-  {
-    if(v[j] < v[pivot]) {
-      swap(v[j], v[i]);
-      i++;
-    }
-  }
-  swap(v[i], v[r]);
-  return i;
-}
-
 void quick(int l, int r) { // calls partition and then split the array into two.
   if(l>=r) return;
   int p = partition(l, r);
   quick(l, p-1);
   quick(p+1, r);
 }
+int partition(int l, int r) { // Lomuto partition
+  int pivot = r; // last element is picked as pivot
+  int i = l; // all elements smaller than pivot will go behind i
+  for (int j = l+1; j+1 <= r; j++) // for every element in (l, r)
+  {
+    // if less than pivot then swap it with the ith element and increment i
+    if(v[j] < v[pivot]) { 
+      swap(v[j], v[i]);
+      i++;
+    }
+  }
+  swap(v[i], v[r]); // because pivot at r we need to swap the ith element with rth
+  return i; // index of pivot
+}
 ```
 
 ### 7. Heap Sort
-### 8. Shell Sort
-### 9. Counting Sort
-### 10. Radix Sort
+
+Heapsort can be thought of as an improved selection sort: like selection sort, heapsort divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element from it and inserting it into the sorted region. Unlike selection sort, heapsort does not waste time with a linear-time scan of the unsorted region; rather, heap sort maintains the unsorted region in a heap data structure to more quickly find the largest element in each step.
+Inplace but no stable
+Algorithm:
+1. Call the buildMaxHeap() function on the list. Also referred to as heapify(), this builds a heap from a list in O(n) operations.
+2. Swap the first element of the list with the final element. Decrease the considered range of the list by one.
+3. Call the siftDown() function on the list to sift the new first element to its appropriate index in the heap.
+4. Go to step (2) unless the considered range of the list is one element.
+
+![heap](https://upload.wikimedia.org/wikipedia/commons/1/1b/Sorting_heapsort_anim.gif) ![anim](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
+*A run of heapsort sorting an array of randomly permuted values. In the first stage of the algorithm the array elements are reordered to satisfy the heap property. Before the actual sorting takes place, the heap tree structure is shown briefly for illustration.*
+
+### 8. Counting Sort
+
+An algorithm for sorting a collection of objects according to keys that are small integers.
+Algorithm:
+For each element a[i] in array increment hash[a[i]].
+For each element in hash with non zero value print the elements times their occurence.
+
+### 9. Radix Sort
+
+It avoids comparison by creating and distributing elements into buckets according to their radix. For elements with more than one significant digit, this bucketing process is repeated for each digit, while preserving the ordering of the prior step, until all digits have been considered. For this reason, radix sort has also been called bucket sort and digital sort.
+
+Radix sort can be applied to data that can be sorted lexicographically, be they integers, words, punch cards, playing cards, or the mail. 
+
+[GFG](https://www.geeksforgeeks.org/radix-sort/)
 
 ### Comparison
 
-Algorithm | Time (best) | Time (avg) | Time (worst) | Space (auxiliary)
---------- | ----------- | ---------- | ------------ | -----
+
+Things to leep in mind
+1. Number of comparisons
+2. Number of swaps
+3. Auxiliary space used
+
+Algorithm | Time (best) | Time (avg) | Time (worst) | Space (auxiliary) | Comment
+--------- | ----------- | ---------- | ------------ | ----------------- | -------
 Insertion Sort | n | n<sup>2</sup> | n<sup>2</sup> | 1
 Selection Sort | n<sup>2</sup> | n<sup>2</sup> | n<sup>2</sup> | 1
 Bubble Sort (opt) | n | n<sup>2</sup> | n<sup>2</sup> | 1
-Bucket Sort | n<sup>2</sup>/k | n<sup>2</sup>/k | n<sup>2</sup> | nk
+Bucket Sort | n<sup>2</sup>/k | n<sup>2</sup>/k | n<sup>2</sup> | nk | k = size of bucket
 Merge Sort | n log n | n log n | n log n | n (array), 1 (linkedlist)
 Quick Sort | n log n | n log n | n<sup>2</sup> | 1
-Heap Sort | n log n | n log n | n log n | n
-Shell Sort | |
-Counting Sort | |
-Radix Sort | |
+Heap Sort | n log n | n log n | n log n | 1
+Counting Sort | | | n+k | n+k | k is the range of the non-negative key values.
+Radix Sort | n | | w.n | w+n | where w is the number of bits required to store each key.
 
 # Order Statistics
 
-### 1. Minimum maximum
+In statistics, the kth order statistic of a statistical sample is equal to its kth-smallest value.[1] Together with rank statistics, order statistics are among the most fundamental tools in non-parametric statistics and inference.
+
+Important special cases of the order statistics are the minimum and maximum value of a sample, and (with some qualifications discussed below) the sample median and other sample quantiles.
+
+When using probability theory to analyze order statistics of random samples from a continuous distribution, the cumulative distribution function is used to reduce the analysis to the case of order statistics of the uniform distribution. 

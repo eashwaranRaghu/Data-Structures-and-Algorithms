@@ -1,47 +1,53 @@
-# Table of Contents :snail:
-1. Algorithm analysis
+# Data structures and algorithms for interviews
+
+This repository contains C++ implementations of general algorithms and data structures.
+
+*For a quick revision checkout the readme files for each topic.*
+
+
+## Table of Contents :snail:
+1. **Algorithm analysis**
 	* Solving recurrences
 		* Iteration Method
 		* Substitution Method
 		* Recurrence Tree Method
 		* Master Method
 	* Amortized Analysis
-2. Searching, Sorting and Order Statistics [readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Readme.md)
+2. **Searching, Sorting and Order Statistics** [Readme](2.%20Searching,%20Sorting%20and%20Order%20Statistics/Readme.md)
 	1. Searching
-		* Binary Search :heavy_check_mark:
-		* Ternary Search :heavy_check_mark:
-		* Exponential Search :heavy_check_mark:
-		* Linear Search :heavy_check_mark:
-		* Interpolation Search :heavy_check_mark:
-		* Jump Search :heavy_check_mark:
+		* [Linear Search](2.%20Searching,%20Sorting%20and%20Order%20Statistics/linearSearch.cpp)
+		* [Binary Search](2.%20Searching,%20Sorting%20and%20Order%20Statistics/binarySearch.cpp)
+		* [Ternary Search](2.%20Searching,%20Sorting%20and%20Order%20Statistics/ternarySearch.cpp)
+		* [Exponential Search](2.%20Searching,%20Sorting%20and%20Order%20Statistics/exponentialSearch.cpp)
+		* [Interpolation Search](2.%20Searching,%20Sorting%20and%20Order%20Statistics/interpolationSearch.cpp)
+		* [Jump Search](2.%20Searching,%20Sorting%20and%20Order%20Statistics/jumpSearch.cpp)
 	2. Sorting
-		* Insertion Sort :heavy_check_mark:
-		* Selection Sort :heavy_check_mark:
-		* Bubble Sort :heavy_check_mark:
+		* [Insertion Sort](2.%20Searching,%20Sorting%20and%20Order%20Statistics/insertionSort.cpp)
+		* [Selection Sort](2.%20Searching,%20Sorting%20and%20Order%20Statistics/selectionSort.cpp)
+		* [Bubble Sort](2.%20Searching,%20Sorting%20and%20Order%20Statistics/bubbleSort.cpp)
 		* Bucket Sort
-		* Merge Sort :heavy_check_mark:
+		* [Merge Sort](2.%20Searching,%20Sorting%20and%20Order%20Statistics/mergeSort.cpp)
 		* Heap Sort
-		* Quick Sort :heavy_check_mark:
-		* Shell Sort
+		* [Quick Sort](2.%20Searching,%20Sorting%20and%20Order%20Statistics/quickSort.cpp)
 		* Counting Sort
 		* Radix Sort
 	3. Order Statistics
 		* Minimum and maximum
-3. Algorithmic Paradigms
+3. **Algorithmic Paradigms**
 	1. Complete Search
-		* N-queen
+		* [N-queen](3.%20Algorithmic%20Paradigms/Complete%20Search/NQueen.cpp)
 	2. Divide and Conquer
 		* Strassen's algorithm for matrix multiplication
 	3. Dynamic programming
-		* 0-1 Knapsack :heavy_check_mark:
-		* Coin change :heavy_check_mark:
-		* 1D Range Sum Query :heavy_check_mark:
-		* Longest Increasing Subsequence :heavy_check_mark:
-		* Longest Common Subsequence :heavy_check_mark:
-		* Matrix Chain Multiplication :heavy_check_mark:
-		* Optimal Binary Search Tree :heavy_check_mark:
-		* Binomial Coefficient :heavy_check_mark:
-		* Ways to add upto an integer :heavy_check_mark:
+		* [0-1 Knapsack](3.%20Algorithmic%20Paradigms/Dynamic%20Programming/01Knapsack.cpp)
+		* [Coin change](3.%20Algorithmic%20Paradigms/Complete%20Search/NQueen.cpp)
+		* [1D Range Sum Query](3.%20Algorithmic%20Paradigms/Complete%20Search/1DRangeSum.cpp)
+		* [Longest Increasing Subsequence](3.%20Algorithmic%20Paradigms/Complete%20Search/LIS.cpp)
+		* [Longest Common Subsequence](3.%20Algorithmic%20Paradigms/Complete%20Search/LCS.cpp)
+		* [Matrix Chain Multiplication](3.%20Algorithmic%20Paradigms/Complete%20Search/MCM.cpp)
+		* [Optimal Binary Search Tree](3.%20Algorithmic%20Paradigms/Complete%20Search/OBST.cpp)
+		* [Binomial Coefficient](3.%20Algorithmic%20Paradigms/Complete%20Search/binomialCoefficient.cpp)
+		* [Ways to add upto an integer](3.%20Algorithmic%20Paradigms/Complete%20Search/howDoYouAdd.cpp)
 		* Number of paths in a dag
 		* Knuth optimization
 		* Convex hull optimizations
@@ -61,7 +67,7 @@
 		* Matroid
 		* Activity Selection
 		* Fractional Knapsack
-4. Trees
+4. **Trees**
 	* Binary Tree
 	* Binary Search Tree
 	* AVL Trees
@@ -77,17 +83,17 @@
 	* Merkle Tree
 	* Segment Tree 
 	* Fenwick Tree (Binary Indexed Tree)
-	* Square Root Decomposition :heavy_check_mark:
-5. Graph theory
+	* [Square Root Decomposition](4.%20Trees/squareRootDecomposition.cpp)
+5. **Graph theory**
 	* Traversals
-		* Depth first search :heavy_check_mark:
-		* Breadth first search :heavy_check_mark:
-		* Flood-Fill (DFS) :heavy_check_mark:
-		* Forest-Fire (BFS) :heavy_check_mark:
+		* [Depth first search](5.%20Graph%20Theory/Traversal/dfs.cpp)
+		* [Breadth first search](5.%20Graph%20Theory/Traversal/bfs.cpp)
+		* [Flood-Fill (DFS)](5.%20Graph%20Theory/Traversal/floodFill.cpp)
+		* [Forest-Fire (BFS)](5.%20Graph%20Theory/Traversal/forestFire.cpp)
 	* Topological Sort
-		* Using modified DFS/BSF :heavy_check_mark:
-		* Kahn algorithm :heavy_check_mark:
-	* Articulation points and bridges (Undiredted graphs) :heavy_check_mark:
+		* [Using modified DFS/BSF](5.%20Graph%20Theory/Topological%20Sort/topological.cpp)
+		* [Kahn algorithm](5.%20Graph%20Theory/Topological%20Sort/kahn.cpp)
+	* [Articulation points and bridges (Undiredted graphs)](5.%20Graph%20Theory/Connectivity/articulationPointsAndBridges.cpp)
 	* Strongly connected components (Directed graphs)
 		* Tarajan algorithm
 		* Kosaraju algorithm
@@ -96,21 +102,21 @@
 		* 3^n (special case of set cover)
 	* Edge coloring
 		* Trees
-	* Union-Find Disjoint Sets :heavy_check_mark:
+	* [Union-Find Disjoint Sets](5.%20Graph%20Theory/Union%20Find%20Disjoint%20Sets/UFDS.cpp)
 	* Minimum spanning tree (Undirected Graphs)
-		* Kruskal algorithm :heavy_check_mark:
-		* Prim algorithm :heavy_check_mark:
+		* [Kruskal algorithm](5.%20Graph%20Theory/Spanning%20Tree/kruskal.cpp)
+		* [Prim algorithm](5.%20Graph%20Theory/Spanning%20Tree/prim.cpp)
 		* Boruvka algorithm
 		* Steiner Tree
 		* Bernard Chazelle
 	* Minimum spanning tree (Arborescence/ Directed Graphs)
 		* Chu–Liu/Edmonds algorithm.
 	* Shortest paths
-		* Bellman-Ford algorithm :heavy_check_mark:
+		* [Bellman-Ford algorithm](5.%20Graph%20Theory/Shortest%20Paths/bellmanFord.cpp)
 		* SPFA (Shortest Path Faster Algorithm)
-		* Dijkstra  algorithm :heavy_check_mark:
+		* [Dijkstra  algorithm](5.%20Graph%20Theory/Shortest%20Paths/dijkstra.cpp)
 		* A* algorithm
-		* Floyd-Warshall algorithm :heavy_check_mark:
+		* [Floyd-Warshall algorithm](5.%20Graph%20Theory/Shortest%20Paths/floydWarshall.cpp)
 		* Johnson algorithm
 	* Paths and circuits
 		* Eulerian path
@@ -138,7 +144,7 @@
 	* K'th shortest path
 	* 2-SAT
 	* Dynamic graphs (extra book-keeping)
-6. Math
+6. **Math**
 	1. Combinatorics
 		* Computation of binomial coefficients
 		* Pigeon-hole principle
@@ -182,7 +188,7 @@
 	5. Matrices
 		* Gaussian elimination
 		* Exponentiation by squaring
-7. Geometry
+7. **Geometry**
 	* Coordinates and vectors
 		* Cross product
 		* Scalar product
@@ -193,7 +199,7 @@
 	* Quadtrees
 	* KD-trees
 	* All segment-segment intersection
-8. Strings
+8. **Strings**
 	* Knuth-Morris-Pratt
 	* Rabin Karp
 	* Tries
@@ -203,7 +209,7 @@
 	* Aho-Corasick
 	* Manacher's algorithm
 	* Letter position lists
-9. Others
+9. **Others**
 	* Combinatorial search
 		* Meet in the middle
 		* Brute-force with pruning
