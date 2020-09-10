@@ -349,8 +349,22 @@ Radix Sort | n | | w.n | w+n | where w is the number of bits required to store e
 
 # Order Statistics
 
-In statistics, the kth order statistic of a statistical sample is equal to its kth-smallest value.[1] Together with rank statistics, order statistics are among the most fundamental tools in non-parametric statistics and inference.
+The ith order statistic of a set of n elements is the ith smallest element. Together with rank statistics, order statistics are among the most fundamental tools in non-parametric statistics and inference.
 
-Important special cases of the order statistics are the minimum and maximum value of a sample, and (with some qualifications discussed below) the sample median and other sample quantiles.
+1. **Quick Sort:** Selection in O(n log n)
+Can be achieved by simple sorting and then picking the ith element.
 
-When using probability theory to analyze order statistics of random samples from a continuous distribution, the cumulative distribution function is used to reduce the analysis to the case of order statistics of the uniform distribution. 
+2. **Randomized-Select:** Selection in Avg(n).
+As in quicksort, we partition the input array
+recursively. But unlike quicksort, which recursively processes both sides of the
+partition, R ANDOMIZED -S ELECT works on only one side of the partition. This
+difference shows up in the analysis: whereas quicksort has an expected running
+time of (n lg n), the expected running time of RANDOMIZED SELECT is (n)
+assuming that the elements are distinct.
+
+3. **Randomized-Select optimized:** Selection in O(n).
+Like RANDOMIZED SELECT , the algorithm SELECT finds the desired ele-
+ment by recursively partitioning the input array. Here, however, we guarantee a
+good split upon partitioning the array. SELECT uses the deterministic partitioning
+algorithm PARTITION from quicksort, but modified to take the
+element to partition around as an input parameter.
