@@ -32,7 +32,7 @@ This repository contains C++ implementations of general algorithms and data stru
 		* Counting Sort
 		* Radix Sort
 	3. Order Statistics
-		* Minimum and maximum
+		* [Minimum and maximum](2.%20Searching,%20Sorting%20and%20Order%20Statistics/randomizedSelect.cpp)
 3. **Algorithmic Paradigms**
 	1. Complete Search
 		* [N-queen](3.%20Algorithmic%20Paradigms/Complete%20Search/NQueen.cpp)
