@@ -368,3 +368,28 @@ ment by recursively partitioning the input array. Here, however, we guarantee a
 good split upon partitioning the array. SELECT uses the deterministic partitioning
 algorithm PARTITION from quicksort, but modified to take the
 element to partition around as an input parameter.
+
+```cpp
+// reusing the quick sort code and making modifications to follow one path when array is partitioned
+int partition(int l, int r, Vi &v) {
+  int pivot = r;
+  int i = l;
+  for (int j = l+1; j+1 <= r; j++)
+  {
+    if(v[j] < v[pivot]) {
+      swap(v[j], v[i]);
+      i++;
+    }
+  }
+  swap(v[i], v[r]);
+  return i;
+}
+
+int quick(int l, int r, int k, Vi &v) { // the kth order is passed in
+  if(l==r) return v[l]; // when only 1 element is obtained it is the kth order number.
+  int p = partition(l, r, v); // obtain from Lomuto partition
+  if(k==p) return v[p]; // when the pivot index equals k, return element
+  if(p > k) return quick(l, p-1, k, v); // pivot index greater than k, look on the left partition
+  else return quick(p+1, r, k, v); // otherwise look on the right partition
+}
+```

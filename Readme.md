@@ -4,8 +4,8 @@ This repository contains C++ implementations of general algorithms and data stru
 
 *For a quick revision checkout the readme files for each topic.*
 
+## Contents
 
-## Table of Contents :snail:
 1. **Algorithm analysis**
 	* Solving recurrences
 		* Iteration Method
