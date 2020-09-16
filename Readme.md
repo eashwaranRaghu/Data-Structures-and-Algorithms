@@ -67,11 +67,21 @@ This repository contains C++ implementations of general algorithms and data stru
 		* Matroid
 		* Activity Selection
 		* Fractional Knapsack
-4. **Trees**
+4. **Trees** [Readme](4.%20Trees/Readme.md)
 	* Binary Tree
-	* Binary Search Tree
-	* AVL Trees
-	* Red-Black Trees
+		* Traversal
+			* [DFS (preorder, inorder, postorder)](4.%20Trees/Binary%20Tree/Traversal/dfs.cpp)
+			* [BFS (levelorder)](4.%20Trees/Binary%20Tree/Traversal/bfs.cpp)
+			* Morris
+			* Vertical
+			* Diagonal
+			* Boundary
+		* Views
+			* top
+			* side
+		* Binary Search Tree
+		* AVL Trees
+		* Red-Black Trees
 	* Treap
 	* Splay Tree
 	* N-ary Tree
@@ -252,3 +262,4 @@ This repository contains C++ implementations of general algorithms and data stru
 	* Euler's Theorem
 	* Fermat's Little theorem
 	* Shunting yard algorithm: expression parsing
+	* LRU caching
