@@ -29,28 +29,40 @@ typedef unordered_multiset<int> UMSi;
 typedef priority_queue<int> PQi;
 typedef queue<int> Qi;
 typedef deque<int> DQi;
+string s;
+int m;
+bool oSign(int a, int b) {
+    return a/abs(a) != b/abs(b);
+}
+
+Vi dfs(int balance, int lastWeight, int move) {
+    if(move == m) {
+        return {lastWeight};
+    }
+    for(int i=1; i<=10; i++) {
+        int newBalance = (move%2==1)? balance+i: balance-i;
+        if(s[i-1] == '1' && lastWeight != i && newBalance != 0 && oSign(balance, newBalance)) {
+            Vi v = dfs(newBalance, i, move+1);
+            if(v.size()) {
+                v.push_back(lastWeight);
+                return v;
+            }
+        }
+    }
+    return {};
+}
 
 int main (int argc, char const *argv[]) {
-	string s; cin >> s;
-    int m; cin >> m;
-    
-    Vi v;
-    for (int i = 0; i < s.size(); i++)
-    {
-        if(s[i] == '1') {
-            v.push_back(i+1);
-        }
-    }
-    sort(v.begin(), v.end());
-    if(v.size() < 2) cout << "NO";
-    else {
+	cin >> s;
+    cin >> m;
+    Vi v = dfs(0, -1, 0);
+    if(v.size()) {
         cout << "YES" << endl;
-        
-        for (int i = 1; i < m; i++)
-        {
-            
-        }
-        
+        v.pop_back();
+        reverse(v.begin(), v.end());
+        for(int u: v) cout << u << ' ';
     }
+    else cout << "NO";
+    
     return EXIT_SUCCESS;
 }
