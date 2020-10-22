@@ -41,7 +41,7 @@ Algo
     Time Complexity: O(n) just like bfs
     Space Complexity: O(n) uses queue
 Why use Kahn not BFS
-We need to know the source at first. Kahn does that. In BFS we need to guess it.
+We need to know the source at first. Kahn does that. In BFS there must be only 1 source.
  */
 
 void kahn(VVi adj, Vi &inDegree, Vi &result){
